@@ -22,7 +22,7 @@ It fetches word definitions, part of speech, synonyms, and antonyms using the [F
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/dictionary-cli.git
+git clone https://github.com/ajawad06/dictionary-cli.git
 cd dictionary-cli
 ```
 2. Install dependencies
