@@ -5,23 +5,53 @@ if (!word) {
   process.exit(1);
 }
 
+//interfaces to ensure type safety
+interface Definition {
+  definition: string;
+  example?: string;
+  synonyms?: string[];
+  antonyms?: string[];
+}
+
+interface Meaning {
+  partOfSpeech: string;
+  definitions: Definition[];
+  synonyms?: string[];
+  antonyms?: string[];
+}
+interface License {
+  name: string;
+  url: string;
+}
+
+interface ApiEntry {
+  word: string;
+  phonetic?: string;
+  phonetics?: any[];
+  meanings: Meaning[];
+  license?: License;
+  sourceUrls?: string[];
+}
+
 //function to fetch data through the dictionary api
 async function getDefinition(reqword: string) {
   try {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${reqword}`;
     const requiredData = await fetch(url);
-    const data = await requiredData.json();
+    const data: ApiEntry[] = await requiredData.json();
     //finding first meaning object in data that also has synonyms as one of its properties
-    const firstMeaning = data[0].meanings.find(
-      (m: any) => m.synonyms && m.synonyms.length > 0
+    const firstMeaning = data[0]?.meanings.find(
+      (m: Meaning) => m.synonyms && m.synonyms.length > 0
     );
-    return {
-      //careful null checks using optional operator & nullish coaelscing operator
-      definition: firstMeaning.definitions?.[0]?.definition,
-      partofspeech: firstMeaning.partOfSpeech,
-      synonym: firstMeaning.synonyms?.[0] ?? "No synonym found",
-      antonym: firstMeaning.antonyms?.[0] ?? "No antonym found",
-    };
+    return firstMeaning
+      ? {
+          //careful null checks using optional operator & nullish coaelscing operator
+          definition: firstMeaning.definitions?.[0]?.definition,
+          partofspeech: firstMeaning.partOfSpeech,
+          synonym: firstMeaning.synonyms?.[0] ?? "No synonym found",
+          antonym: firstMeaning.antonyms?.[0] ?? "No antonym found",
+        }
+      : null;
   } catch (error: unknown) {
     if (error instanceof Error)
       console.log("An error occured. ", error.message);
