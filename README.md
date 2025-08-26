@@ -1,9 +1,9 @@
-# Dictionary CLI
+# 📕 Dictionary CLI
 
 A simple **terminal-based dictionary application** built with **TypeScript** and **Node.js**.  
 It fetches word definitions, part of speech, synonyms, and antonyms using the [Free Dictionary API](https://dictionaryapi.dev/).
 
-## Features
+## 🚀 Features
 
 - Fetch the **definition** of a word.
 - Show the **part of speech**.
@@ -11,13 +11,13 @@ It fetches word definitions, part of speech, synonyms, and antonyms using the [F
 - Display an **antonym** if available.
 - Fully **terminal-based**
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 - Typescript
 - Node.js
 - Dictionary API
 
-## Installation
+## ⚙️ Installation
 
 1. Clone the repository:
 
@@ -36,7 +36,7 @@ npm install
 npm run build
 ```
 
-## Usage
+## 🎮 Usage
 
 ```bash
 npm start reqWord
