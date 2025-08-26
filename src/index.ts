@@ -1,20 +1,22 @@
+//get hold of the required word, since format is npm start (word) so word is 3rd argument in command line.
 const word = process.argv[2];
 if (!word) {
   console.error("Please provide a word!");
   process.exit(1);
 }
 
+//function to fetch data through the dictionary api
 async function getDefinition(reqword: string) {
   try {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${reqword}`;
     const requiredData = await fetch(url);
     const data = await requiredData.json();
-    // console.log(jsonData);
-    // const firstMeaning = data[0].meanings?.[0];
+    //finding first meaning object in data that also has synonyms as one of its properties
     const firstMeaning = data[0].meanings.find(
       (m: any) => m.synonyms && m.synonyms.length > 0
     );
     return {
+      //careful null checks using optional operator & nullish coaelscing operator
       definition: firstMeaning.definitions?.[0]?.definition,
       partofspeech: firstMeaning.partOfSpeech,
       synonym: firstMeaning.synonyms?.[0] ?? "No synonym found",
@@ -33,7 +35,9 @@ async function fetchData(word: string) {
     console.log("No data found!");
     return;
   }
+  //destructure data
   const { definition, partofspeech, synonym, antonym } = result;
+  //format the output data
   console.log(`
 ---- ${word.toUpperCase()} ----
 Definition     : ${definition}
