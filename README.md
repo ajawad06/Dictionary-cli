@@ -3,8 +3,6 @@
 A simple **terminal-based dictionary application** built with **TypeScript** and **Node.js**.  
 It fetches word definitions, part of speech, synonyms, and antonyms using the [Free Dictionary API](https://dictionaryapi.dev/).
 
----
-
 ## Features
 
 - Fetch the **definition** of a word.
@@ -13,16 +11,11 @@ It fetches word definitions, part of speech, synonyms, and antonyms using the [F
 - Display an **antonym** if available.
 - Fully **terminal-based**
 
----
-
 ## Tech Stack
 
 - Typescript
 - Node.js
 - Dictionary API
-
-
----
 
 ## Installation
 
@@ -42,8 +35,6 @@ npm install
 ```bash
 npm run build
 ```
-
----
 
 ## Usage
 
