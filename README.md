@@ -39,6 +39,6 @@ npm run build
 ## 🎮 Usage
 
 ```bash
-npm start reqWord
+npm start <reqWord>
 e.g npm start ugly
 ```
