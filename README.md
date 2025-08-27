@@ -1,6 +1,6 @@
 # 📕 Dictionary CLI
 
-A simple **terminal-based dictionary application** built with **TypeScript** and **Node.js**.  
+A **terminal-based dictionary application** built with **TypeScript** and **Node.js**.  
 It fetches word definitions, part of speech, synonyms, and antonyms using the [Free Dictionary API](https://dictionaryapi.dev/).
 
 ## 🚀 Features
